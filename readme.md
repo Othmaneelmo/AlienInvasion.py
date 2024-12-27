@@ -1,2 +1,7 @@
-I am creating this python project to master my pyhton skills.
-It is also an opportunity to improve my git and github skills and understanding, as I will be coding on 2 devices to build this project.
+##Alien Invasion Game Project
+I am creating this Python project to improve my Python skills and expand my understanding of Git and GitHub. This project also serves as an opportunity to practice coding across multiple devices while collaborating with Git.
+
+##Inspiration and Learning Resources
+This project is inspired by and guided by the following resources:
+    - [Clear Code Youtube Channel](https://www.youtube.com/@ClearCode)
+    - Python Crash Course (2nd Edition) by Eric Matthes
