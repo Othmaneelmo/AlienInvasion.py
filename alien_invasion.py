@@ -30,4 +30,4 @@ if __name__ == '__main__':
     #make game instance, run game
     ai = AlienInvasion()
     ai.run_game()
-
+#commiting from second device
