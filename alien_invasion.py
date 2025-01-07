@@ -1,17 +1,25 @@
 import sys #tools to exit the game when the player quits
 import pygame #contains functionalities to make the game
+from settings import Settings
+from ship import Ship
+
 
 class AlienInvasion:
-    '''class to manage overall assets and behaviors'''
+    '''
+    class to manage overall assets and behaviors
+    '''
     
     def __init__(self):
-        '''initialize game and create ressources'''
-        pygame.init()
+        '''
+        initialize game and create ressources
+        '''
 
-        self.screen = pygame.display.set_mode((1200, 800))
+        pygame.init()      #initialize pygame imported modules
+        self.settings = Settings()      #create settings instance 
 
-        #set background color
-        self.bg_color = (5, 5, 30)
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_lenght))      #set screen size using Settings
+        self.bg_color = (self.settings.bg_color)      #set background color
+        
 
     def run_game(self):
         '''start main loop for game'''
@@ -26,8 +34,7 @@ class AlienInvasion:
             #make the most recently drawn screen visible
             pygame.display.flip()
 
-if __name__ == '__main__':
+if __name__ == '__main__':      #only run when script is ran directly (ex: not when imported)
     #make game instance, run game
     ai = AlienInvasion()
     ai.run_game()
-#commiting from second device
