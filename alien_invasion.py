@@ -19,6 +19,9 @@ class AlienInvasion:
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_lenght))      #set screen size using Settings
         self.bg_color = (self.settings.bg_color)      #set background color
+
+        #make Ship()instace with AlienInvasion as argument
+        self.ship = Ship(self)
         
 
     def run_game(self):
@@ -31,6 +34,9 @@ class AlienInvasion:
 
             #redraw the screen during each loop iteration
             self.screen.fill(self.bg_color)
+
+            self.ship.blitme()
+
             #make the most recently drawn screen visible
             pygame.display.flip()
 
