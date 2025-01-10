@@ -28,9 +28,9 @@ class Ship():
          Update the ship's position according to the moving flag value
         '''
         #Update ship's x value, not rect
-        if self.moving_right:       #if falg = True
+        if self.moving_right and self.rect.right < self.screen_rect.right:       #if falg = True and ship not at the border of screen yet
             self.x += self.settings.ship_speed
-        if self.moving_left:
+        if self.moving_left and self.rect.left > self.screen_rect.left:
             self.x -= self.settings.ship_speed
         
         self.rect.x = self.x
