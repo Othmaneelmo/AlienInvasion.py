@@ -8,6 +8,7 @@ class Settings():
         self.screen_lenght = 800
         self.bg_color = (5, 5, 30)
 
+        self.ship_speed = 0.5
         
 
 
