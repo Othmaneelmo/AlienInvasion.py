@@ -13,10 +13,11 @@ class AlienInvasion:
         '''
         initialize game and create ressources
         '''
-
-        pygame.init()      #initialize pygame imported modules
+        pygame.init()      #initialize pygame modules
         self.settings = Settings()      #create settings instance 
 
+
+        
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_lenght))      #set screen size using Settings
         self.bg_color = (self.settings.bg_color)      #set background color
 
@@ -44,21 +45,29 @@ class AlienInvasion:
                 elif event.type == pygame.KEYDOWN:
                      self._event_check_keydown(event)
 
-                        
                 #KEY UP EVENT
                 elif event.type == pygame.KEYUP:
                      self._event_check_keyup(event)
                     
     def _event_check_keydown(self, event):
-        if event.key == pygame.K_RIGHT:
+        #right arrow / D --> move right
+        if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
             self.ship.moving_right = True
-        if event.key == pygame.K_LEFT:
+        #left arrow / A --> move left
+        if event.key == pygame.K_LEFT or event.key == pygame.K_a:
             self.ship.moving_left = True
+        #backspace --> QUIT
+        if event.key == pygame.K_BACKSPACE:
+             sys.exit()
+        
+
 
     def _event_check_keyup(self, event):
-        if event.key == pygame.K_RIGHT:
+        #right arrow / D --> move right
+        if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
             self.ship.moving_right = False
-        if event.key == pygame.K_LEFT:
+        #left arrow / A --> move left
+        if event.key == pygame.K_LEFT or event.key == pygame.K_a:
             self.ship.moving_left = False
          
 
