@@ -15,12 +15,14 @@ class AlienInvasion:
         '''
         pygame.init()      #initialize pygame modules
         self.settings = Settings()      #create settings instance 
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_lenght))  #set screen size using Settings
 
 
-        
-        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_lenght))      #set screen size using Settings
+        #self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        #self.settings.screen_width = self.screen.get_rect().width
+        #self.settings.screen_height = self.screen.get_rect().height
         self.bg_color = (self.settings.bg_color)      #set background color
-
+        pygame.display.set_caption("Alien Invasion")
         #make Ship()instace with AlienInvasion as argument
         self.ship = Ship(self)
 
@@ -48,6 +50,8 @@ class AlienInvasion:
                 #KEY UP EVENT
                 elif event.type == pygame.KEYUP:
                      self._event_check_keyup(event)
+
+
                     
     def _event_check_keydown(self, event):
         #right arrow / D --> move right
@@ -59,8 +63,10 @@ class AlienInvasion:
         #backspace --> QUIT
         if event.key == pygame.K_BACKSPACE:
              sys.exit()
-        
-
+        if event.key == pygame.K_F11:
+            self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+            self.settings.screen_width = self.screen.get_rect().width
+            self.settings.screen_height = self.screen.get_rect().height
 
     def _event_check_keyup(self, event):
         #right arrow / D --> move right
@@ -77,24 +83,6 @@ class AlienInvasion:
             self.ship.blitme()
             #make the most recently drawn screen visible
             pygame.display.flip()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':      #only run when script is ran directly (ex: not when imported)
