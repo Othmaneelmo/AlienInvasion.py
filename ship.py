@@ -1,5 +1,6 @@
 import pygame
 
+
 class Ship():
     '''
     Class to manage player ship
@@ -18,10 +19,13 @@ class Ship():
 
         #store decimal value for ship's horizontal position
         self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
 
         #Movement flags
         self.moving_right = False       #not miving by default
         self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
 
     def update(self):
         '''
@@ -32,8 +36,16 @@ class Ship():
             self.x += self.settings.ship_speed
         if self.moving_left and self.rect.left > self.screen_rect.left:
             self.x -= self.settings.ship_speed
+
+        #Update ship's y value, not rect
+        if self.moving_up and self.rect.top > self.screen_rect.top:       #if falg = True and ship not at the border of screen yet
+            self.y -= self.settings.ship_speed
+        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
+            self.y += self.settings.ship_speed
         
-        self.rect.x = self.x
+        self.rect.x = int(self.x)
+        self.rect.y = int(self.y)
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)     #allow ship surface to be placed on screen surface
+        
