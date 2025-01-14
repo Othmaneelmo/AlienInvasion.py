@@ -15,7 +15,7 @@ class Ship():
 
         self.image = pygame.image.load("images/ship.bmp")       #importing image
         self.rect = self.image.get_rect()       #retrieve the rectangular boundaries for the image, to help with positioning the ship
-        self.rect.midbottom = self.screen_rect.midbottom        #placing ship in midbottom of screen
+        self.rect.midbottom = self.screen_rect.center       #placing ship in midbottom of screen
 
         #store decimal value for ship's horizontal position
         self.x = float(self.rect.x)
