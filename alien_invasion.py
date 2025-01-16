@@ -25,6 +25,7 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
         #make Ship()instace with AlienInvasion as argument
         self.ship = Ship(self)
+        print(self.settings.ship_speed)
 
     def run_game(self):
         '''start main loop for game'''
@@ -76,14 +77,9 @@ class AlienInvasion:
             
         #Enter FULLSCREEN
         else:
-            #save default screen sizes
-            #self.settings.screen_width, self.settings.screen_height = self.screen.get_rect().width, self.screen.get_rect().height
-
             self.screen = pygame.display.set_mode((self.settings.fs_width, self.settings.fs_height), pygame.FULLSCREEN)            
 
-            #print(self.ship.rect , self.ship.rect.x , self.ship.rect.y)
-            #print(self.screen.get_rect())
-
+        print(self.settings.ship_speed)
         #Get New Screen Dimensions
         new_screen_rect = self.screen.get_rect()
         self.ship.screen_rect = new_screen_rect
