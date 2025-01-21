@@ -64,40 +64,9 @@ class AlienInvasion:
         #backspace --> QUIT
         if event.key == pygame.K_BACKSPACE:
              sys.exit()
-        # F11 --> Full-screen toggle
-        if event.key == pygame.K_F11:
-             self._toggle_fullscreen_borderless()
-        if event.key == pygame.K_F10:
-             self._toggle_maximized_window()
 
-    def _toggle_fullscreen_borderless(self):
-        #Exit FULLSCREEN
-        if self.screen.get_flags() & pygame.FULLSCREEN:
-            self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
-            
-        #Enter FULLSCREEN
-        else:
-            self.screen = pygame.display.set_mode((self.settings.fs_width, self.settings.fs_height), pygame.FULLSCREEN)            
 
-        print(self.settings.ship_speed)
-        #Get New Screen Dimensions
-        new_screen_rect = self.screen.get_rect()
-        self.ship.screen_rect = new_screen_rect
 
-        scale_x = new_screen_rect.width / self.settings.screen_width
-        scale_y = new_screen_rect.height / self.settings.screen_height
-
-        self.ship.rect.x = int(self.ship.rect.x * scale_x)
-        self.ship.rect.y = int(self.ship.rect.y * scale_y)
-        self.ship.x = float(self.ship.rect.x)
-        self.ship.y = float(self.ship.rect.y)       
-
-        self.settings.fs_width = new_screen_rect.width
-        self.settings.fs_height = new_screen_rect.height
-
-            
-    def _toggle_maximized_window():
-         pass
     
     def _event_check_keyup(self, event):
         #right arrow / D --> move right
