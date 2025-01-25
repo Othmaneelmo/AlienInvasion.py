@@ -36,6 +36,11 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+
+            #remove bullets when they reach top of screen
+            for bullet in self.bullets.copy():      #iterate over a copy to safely remove bullets without affecting original list
+                if bullet.rect.bottom <= 0 :
+                    self.bullets.remove(bullet)
             self._update_screen()
 
 
