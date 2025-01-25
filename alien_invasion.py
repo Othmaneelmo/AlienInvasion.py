@@ -35,12 +35,7 @@ class AlienInvasion:
             #watch for any keyboard or mouse inputs
             self._check_events()
             self.ship.update()
-            self.bullets.update()
-
-            #remove bullets when they reach top of screen
-            for bullet in self.bullets.copy():      #iterate over a copy to safely remove bullets without affecting original list
-                if bullet.rect.bottom <= 0 :
-                    self.bullets.remove(bullet)
+            self._update_bullets()
             self._update_screen()
 
 
@@ -98,9 +93,21 @@ class AlienInvasion:
         '''
         Create new bullet and add it to bullets group
         '''
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
-        
+        if len(self.bullets) < self.settings.bullet_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+
+    def _update_bullets(self):
+        '''
+        Update bullet position and remove old ones
+        '''
+        self.bullets.update()
+        #remove bullets when they reach top of screen
+        for bullet in self.bullets.copy():      #iterate over a copy to safely remove bullets without affecting original list
+            if bullet.rect.bottom <= 0 :
+                self.bullets.remove(bullet)
+
 
     def _update_screen(self):
             #redraw the screen during each loop iteration
