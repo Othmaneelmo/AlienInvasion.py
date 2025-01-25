@@ -1,10 +1,11 @@
 import sys #tools to exit the game when the player quits
 import pygame #contains functionalities to make the game
-import os
-os.environ['SDL_VIDEO_CENTERED'] = '1'
+#import os
+#os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 
 class AlienInvasion:
@@ -22,10 +23,11 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))  #set screen size using Settings
 
         self.bg_color = (self.settings.bg_color)      #set background color
-        pygame.display.set_caption("Alien Invasion")
+        pygame.display.set_caption("Alien Invasion") #change window caption
         #make Ship()instace with AlienInvasion as argument
-        self.ship = Ship(self)
-        print(self.settings.ship_speed)
+        self.ship = Ship(self)      #create ship instance
+        self.bullets = pygame.sprite.Group()        #add bullet sprites group
+
 
     def run_game(self):
         '''start main loop for game'''
@@ -33,7 +35,9 @@ class AlienInvasion:
             #watch for any keyboard or mouse inputs
             self._check_events()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()
+
 
     def _check_events(self):
         for event in pygame.event.get():
@@ -60,6 +64,9 @@ class AlienInvasion:
             self.ship.moving_up = True
         if event.key == pygame.K_DOWN or event.key == pygame.K_s:
             self.ship.moving_down = True
+        
+        if event.key == pygame.K_SPACE:
+            self._fire_bullet()
 
         #backspace --> QUIT
         if event.key == pygame.K_BACKSPACE:
@@ -82,12 +89,20 @@ class AlienInvasion:
 
 
     
-         
+    def _fire_bullet(self):
+        '''
+        Create new bullet and add it to bullets group
+        '''
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
+        
 
     def _update_screen(self):
             #redraw the screen during each loop iteration
             self.screen.fill(self.bg_color)
             self.ship.blitme()
+            for bullet in self.bullets.sprites():
+                bullet.draw_bullet()
             #make the most recently drawn screen visible
             pygame.display.flip()
 
