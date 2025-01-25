@@ -6,6 +6,7 @@ import pygame #contains functionalities to make the game
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien 
 
 
 class AlienInvasion:
@@ -25,6 +26,9 @@ class AlienInvasion:
         #make Ship()instace with AlienInvasion as argument
         self.ship = Ship(self)      #create ship instance
         self.bullets = pygame.sprite.Group()        #add bullet sprites group
+
+        self.aliens = pygame.sprite.Group()
+        self._create_squadron()
 
 
     def run_game(self):
@@ -91,6 +95,12 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullet_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+    
+
+    def _create_squadron(self):
+        #make an alien
+        alien = Alien(self)
+        self.aliens.add(alien)
 
 
     def _update_bullets(self):
@@ -110,6 +120,7 @@ class AlienInvasion:
             self.ship.blitme()
             for bullet in self.bullets.sprites():
                 bullet.draw_bullet()
+            self.aliens.draw(self.screen)
             #make the most recently drawn screen visible
             pygame.display.flip()
 

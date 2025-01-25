@@ -2,7 +2,7 @@ import pygame
 from pygame.sprite import Sprite
 
 class Alien(Sprite):
-    def __inti(self, ai_game):
+    def __init__(self, ai_game):
         '''
         initialize alien and starting position
         '''
