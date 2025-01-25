@@ -18,10 +18,8 @@ class AlienInvasion:
         initialize game and create ressources
         '''
         pygame.init()      #initialize pygame modules
-
         self.settings = Settings()      #create settings instance  
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))  #set screen size using Settings
-
         self.bg_color = (self.settings.bg_color)      #set background color
         pygame.display.set_caption("Alien Invasion") #change window caption
         #make Ship()instace with AlienInvasion as argument
@@ -73,8 +71,6 @@ class AlienInvasion:
              sys.exit()
 
 
-
-    
     def _event_check_keyup(self, event):
         #right arrow / D --> move right
         if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
@@ -88,7 +84,6 @@ class AlienInvasion:
             self.ship.moving_down = False
 
 
-    
     def _fire_bullet(self):
         '''
         Create new bullet and add it to bullets group

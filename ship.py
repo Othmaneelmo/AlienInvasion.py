@@ -27,6 +27,8 @@ class Ship():
         self.moving_up = False
         self.moving_down = False
 
+
+    
     def update(self):
         '''
          Update the ship's position according to the moving flag value
@@ -37,8 +39,9 @@ class Ship():
         if self.moving_left and self.rect.left > self.screen_rect.left:
             self.x -= self.settings.ship_speed
 
+        invisible_wall_top = self.screen_rect.top + 500 
         #Update ship's y value, not rect
-        if self.moving_up and self.rect.top > self.screen_rect.top:       #if falg = True and ship not at the border of screen yet
+        if self.moving_up and self.rect.top > invisible_wall_top:       #if falg = True and ship not at the border of screen yet
             self.y -= self.settings.ship_speed
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.y += self.settings.ship_speed
