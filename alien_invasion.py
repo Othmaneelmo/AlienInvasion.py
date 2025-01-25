@@ -104,7 +104,7 @@ class AlienInvasion:
         #spacing between aliens is 1 alien width
         alien_width = alien.rect.width
         available_space_x = self.settings.screen_width - (2*alien_width)
-        number_aliens_x = available_space_x // 2 * alien_width
+        number_aliens_x = available_space_x // (2 * alien_width)
         
         #Create 1st row of aliens
         for alien_number in range(number_aliens_x):
@@ -114,8 +114,6 @@ class AlienInvasion:
             self.aliens.add(alien)
 
         
-
-
     def _update_bullets(self):
         '''
         Update bullet position and remove old ones
