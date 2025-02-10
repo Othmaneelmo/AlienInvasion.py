@@ -13,7 +13,6 @@ class AlienInvasion:
     '''
     class to manage overall assets and behaviors
     '''
-    
     def __init__(self):
         '''
         initialize game and create ressources
@@ -41,7 +40,6 @@ class AlienInvasion:
             self._update_aliens()
 
             self._update_screen()
-
 
 
     def _check_events(self):
@@ -119,6 +117,7 @@ class AlienInvasion:
             for alien_number in range(number_aliens_x):
                 self._create_alien(alien_number, row_number)
 
+
     def _create_alien(self, alien_number, row_number):
         """Create Alien and place it in row"""
         alien = Alien(self)
@@ -128,12 +127,14 @@ class AlienInvasion:
         alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
         self.aliens.add(alien)
 
+
     def _check_squadron_edges(self):
         """Respond appropriately if alien hits screen edge"""
         for alien in self.aliens.sprites():
             if alien.check_edges():
                 self._change_squadron_direction()
                 break
+
 
     def _change_squadron_direction(self):
         """Drop entire squadron and change its direction"""
@@ -151,7 +152,6 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0 :
                 self.bullets.remove(bullet)
         self._check_bullet_alien_collions()
-
 
 
     def _check_bullet_alien_collions(self):
@@ -172,6 +172,11 @@ class AlienInvasion:
         """Check if squadron is at an edge, then update all aliens position"""
         self._check_squadron_edges()
         self.aliens.update()
+
+        #look for alien/ship collision
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print("collision alien/ship happened!")
+
 
     def _update_screen(self):
             #redraw the screen during each loop iteration
