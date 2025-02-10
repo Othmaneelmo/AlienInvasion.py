@@ -38,7 +38,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
-            self._update_alien()
+            self._update_aliens()
 
             self._update_screen()
 
@@ -128,7 +128,19 @@ class AlienInvasion:
         alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
         self.aliens.add(alien)
 
-        
+    def _check_squadron_edges(self):
+        """Respond appropriately if alien hits screen edge"""
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_squadron_direction()
+                break
+
+    def _change_squadron_direction(self):
+        """Drop entire squadron and change its direction"""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.squadron_drop_speed
+        self.settings.squadron_direction *= -1
+
     def _update_bullets(self):
         '''
         Update bullet position and remove old ones
@@ -139,10 +151,11 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0 :
                 self.bullets.remove(bullet)
 
-    def _update_alien(self):
-        """Update all aliens position"""
+    def _update_aliens(self):
+        """Check if squadron is at an edge, then update all aliens position"""
+        self._check_squadron_edges()
         self.aliens.update()
-        
+
     def _update_screen(self):
             #redraw the screen during each loop iteration
             self.screen.fill(self.bg_color)

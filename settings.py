@@ -23,9 +23,9 @@ class Settings():
         self.bullet_allowed = 3
 
         #Alien settings
-        self.alien_speed = 1.0
-        self.squadron_drop_speed =10
-        self.squadron_direction = 1 #right
+        self.alien_speed = 0.1
+        self.squadron_drop_speed = 1
+        self.squadron_direction = 1 #1 is right, -1 is left
         
 
 
