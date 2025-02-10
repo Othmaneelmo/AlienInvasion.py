@@ -75,6 +75,9 @@ class AlienInvasion:
         """Start new game when player clicks play button"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and self.stats.game_active != True:
+            #Hide Cursor
+            pygame.mouse.set_visible(False)
+
             #Reset game stats
             self.stats.reset_stats()
             self.stats.game_active = True
@@ -233,6 +236,7 @@ class AlienInvasion:
             sleep(0.5)
         else:
             self.stats.game_active = False
+            pygame.mouse.set_visible(True)
 
         
 
