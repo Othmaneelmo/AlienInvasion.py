@@ -1,5 +1,6 @@
 import sys #tools to exit the game when the player quits
 import pygame #contains functionalities to make the game
+from time import sleep
 #import os
 #os.environ['SDL_VIDEO_CENTERED'] = '1'
 
@@ -7,6 +8,7 @@ from settings import Settings
 from ship import Ship
 from bullet import Bullet
 from alien import Alien 
+from game_stats import GameStats
 
 
 class AlienInvasion:
@@ -22,6 +24,10 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))  #set screen size using Settings
         self.bg_color = (self.settings.bg_color)      #set background color
         pygame.display.set_caption("Alien Invasion") #change window caption
+
+        #Create instance to store game stats
+        self.stats = GameStats(self)
+
         #make Ship()instace with AlienInvasion as argument
         self.ship = Ship(self)      #create ship instance
         self.bullets = pygame.sprite.Group()        #add bullet sprites group
@@ -176,6 +182,24 @@ class AlienInvasion:
         #look for alien/ship collision
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
             print("collision alien/ship happened!")
+            self._ship_hit()
+
+
+    def _ship_hit(self):
+        """respond to ship/alien collision"""
+        #decrement ship_left
+        self.stats.ships_left -= 1
+
+        #get rid of remaining aliens and bullets
+        self.aliens.empty()
+        self.bullets.empty()
+
+        #create new squadron and center the ship
+        self._create_squadron()
+        self.ship.center_ship()
+
+        #pause
+        sleep(0.5)
 
 
     def _update_screen(self):

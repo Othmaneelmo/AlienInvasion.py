@@ -12,8 +12,10 @@ class Settings():
         self.screen_width = 1200
         self.screen_height = 800
 
-        #Default ship's speed
+        #ship settings
         self.ship_speed = 0.3
+        self.ship_limit = 3
+
 
         #bullet
         self.bullet_speed = 1
@@ -24,7 +26,7 @@ class Settings():
 
         #Alien settings
         self.alien_speed = 0.1
-        self.squadron_drop_speed = 1
+        self.squadron_drop_speed = 25
         self.squadron_direction = 1 #1 is right, -1 is left
         
 

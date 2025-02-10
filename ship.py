@@ -49,6 +49,14 @@ class Ship():
         self.rect.x = int(self.x)
         self.rect.y = int(self.y)
 
+
+    def center_ship(self):
+        """Center the ship on the screen"""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+
     def blitme(self):
         self.screen.blit(self.image, self.rect)     #allow ship surface to be placed on screen surface
         
