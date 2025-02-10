@@ -26,7 +26,7 @@ class Settings():
 
         #Alien settings
         self.alien_speed = 0.1
-        self.squadron_drop_speed = 25
+        self.squadron_drop_speed = 20
         self.squadron_direction = 1 #1 is right, -1 is left
         
 
