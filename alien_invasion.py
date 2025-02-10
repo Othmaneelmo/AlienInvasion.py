@@ -41,9 +41,11 @@ class AlienInvasion:
         while True:
             #watch for any keyboard or mouse inputs
             self._check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+
+            if self.stats.game_active == True:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
 
             self._update_screen()
 
@@ -190,19 +192,24 @@ class AlienInvasion:
 
     def _ship_hit(self):
         """respond to ship/alien collision"""
-        #decrement ship_left
-        self.stats.ships_left -= 1
+        if self.stats.ships_left > 0:
+            #decrement ship_left
+            self.stats.ships_left -= 1
 
-        #get rid of remaining aliens and bullets
-        self.aliens.empty()
-        self.bullets.empty()
+            #get rid of remaining aliens and bullets
+            self.aliens.empty()
+            self.bullets.empty()
 
-        #create new squadron and center the ship
-        self._create_squadron()
-        self.ship.center_ship()
+            #create new squadron and center the ship
+            self._create_squadron()
+            self.ship.center_ship()
 
-        #pause
-        sleep(0.5)
+            #pause
+            sleep(0.5)
+        else:
+            self.stats.game_active = False
+
+        
 
 
     def _check_aliens_bottom(self):
