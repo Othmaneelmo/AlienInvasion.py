@@ -150,10 +150,15 @@ class AlienInvasion:
         for bullet in self.bullets.copy():      #iterate over a copy to safely remove bullets without affecting original list
             if bullet.rect.bottom <= 0 :
                 self.bullets.remove(bullet)
+        self._check_bullet_alien_collions()
 
+
+
+    def _check_bullet_alien_collions(self):
+        """respond to bullet/alien collisions"""
         #Check for bullets that hit aliens
         #if so get rid of bullet and alien
-        q = pygame.sprite.groupcollide(
+        collisions = pygame.sprite.groupcollide(
         self.bullets, self.aliens, True, True
         )
 
@@ -161,7 +166,6 @@ class AlienInvasion:
             #Destroy existing bullets and make new squadron
             self.bullets.empty()
             self._create_squadron()
-            
 
 
     def _update_aliens(self):
