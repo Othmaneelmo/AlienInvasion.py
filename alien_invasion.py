@@ -75,6 +75,8 @@ class AlienInvasion:
         """Start new game when player clicks play button"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and self.stats.game_active != True:
+            #Reset game settings
+            self.settings.initialize_dynamic_settings()
             #Hide Cursor
             pygame.mouse.set_visible(False)
 
@@ -145,7 +147,7 @@ class AlienInvasion:
 
         #determine number of rows that fit on screen
         ship_height = self.ship.rect.height
-        available_space_y = self.settings.screen_height - (4 * alien_height) -ship_height
+        available_space_y = self.settings.screen_height - (10 * alien_height) -ship_height
         number_rows = available_space_y // (2*alien_height)
         
         #Create full squadron of aliens
