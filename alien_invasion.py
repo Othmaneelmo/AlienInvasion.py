@@ -89,6 +89,8 @@ class AlienInvasion:
             self.stats.reset_stats()
             self.stats.game_active = True
 
+            self.sb.prep_score()
+
             #remove remaining aliens and bullets
             self.aliens.empty()
             self.bullets.empty()
@@ -98,7 +100,6 @@ class AlienInvasion:
             self.ship.center_ship()
 
 
-                
     def _event_check_keydown(self, event):
         #right arrow / D --> move right
         if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
@@ -152,7 +153,7 @@ class AlienInvasion:
 
         #determine number of rows that fit on screen
         ship_height = self.ship.rect.height
-        available_space_y = self.settings.screen_height - (10 * alien_height) -ship_height
+        available_space_y = self.settings.screen_height - (1* alien_height) -ship_height
         number_rows = available_space_y // (2*alien_height)
         
         #Create full squadron of aliens

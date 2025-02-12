@@ -8,8 +8,9 @@ class GameStats:
         #start alien invasion in inaactive state
         self.game_active = False
 
-        self.score = 0
+        
 
     def reset_stats(self):
         """initializa stats that can change during the game"""
         self.ships_left = self.settings.ship_limit
+        self.score = 0
