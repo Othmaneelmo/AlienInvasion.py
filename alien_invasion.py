@@ -91,6 +91,7 @@ class AlienInvasion:
 
             self.sb.prep_score()
             self.sb.prep_level()
+            self.sb.prep_ships()
 
             #remove remaining aliens and bullets
             self.aliens.empty()
@@ -154,7 +155,7 @@ class AlienInvasion:
 
         #determine number of rows that fit on screen
         ship_height = self.ship.rect.height
-        available_space_y = self.settings.screen_height - (1* alien_height) -ship_height   #change squadron size here
+        available_space_y = self.settings.screen_height - (4 * alien_height) -ship_height   #change squadron size here
         number_rows = available_space_y // (2*alien_height)
         
         #Create full squadron of aliens
@@ -242,6 +243,7 @@ class AlienInvasion:
         if self.stats.ships_left > 0:
             #decrement ship_left
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
 
             #get rid of remaining aliens and bullets
             self.aliens.empty()
