@@ -153,7 +153,7 @@ class AlienInvasion:
 
         #determine number of rows that fit on screen
         ship_height = self.ship.rect.height
-        available_space_y = self.settings.screen_height - (1* alien_height) -ship_height
+        available_space_y = self.settings.screen_height - (10* alien_height) -ship_height
         number_rows = available_space_y // (2*alien_height)
         
         #Create full squadron of aliens
