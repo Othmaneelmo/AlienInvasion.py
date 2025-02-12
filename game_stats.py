@@ -8,6 +8,8 @@ class GameStats:
         #start alien invasion in inaactive state
         self.game_active = False
 
+        self.high_score = 0
+
         
 
     def reset_stats(self):

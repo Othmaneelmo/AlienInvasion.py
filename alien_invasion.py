@@ -153,7 +153,7 @@ class AlienInvasion:
 
         #determine number of rows that fit on screen
         ship_height = self.ship.rect.height
-        available_space_y = self.settings.screen_height - (10* alien_height) -ship_height
+        available_space_y = self.settings.screen_height - (1* alien_height) -ship_height   #change squadron size here
         number_rows = available_space_y // (2*alien_height)
         
         #Create full squadron of aliens
@@ -209,6 +209,7 @@ class AlienInvasion:
             for aliens in collisions.values():
                 self.stats.score += self.settings.alien_points * len(aliens) 
             self.sb.prep_score()
+            self.sb.check_high_score()
 
         if not self.aliens:
             #Destroy existing bullets and make new squadron
