@@ -11,8 +11,8 @@ This project was inspired by and guided by the following resources:
 Alien Invasion is a 2D arcade-style game built using Python and Pygame. The player controls a spaceship and must shoot down incoming alien squadrons while avoiding collisions. The game increases in difficulty as the player progresses, with aliens becoming faster and more challenging.
 
 <img src="https://github.com/user-attachments/assets/fa1c9e2f-6aab-4feb-a46a-aabe85859968" alt="Sample Image" width="1000">
-<img src="https://github.com/user-attachments/assets/c9d68968-ac25-4bb6-8650-0967f4e89a95" alt="Sample Image" width="410">
-<img src="https://github.com/user-attachments/assets/c4fb7d54-06a9-442c-8a8b-3099a5e39fe9" alt="Sample Image" width="410">
+<img src="https://github.com/user-attachments/assets/c9d68968-ac25-4bb6-8650-0967f4e89a95" alt="Sample Image" width="411">
+<img src="https://github.com/user-attachments/assets/c4fb7d54-06a9-442c-8a8b-3099a5e39fe9" alt="Sample Image" width="411">
 
 
 
